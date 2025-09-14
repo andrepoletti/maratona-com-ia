@@ -4,6 +4,10 @@ metadata:
   name: encontros-tech
   labels:
     app: encontros-tech
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8000"
+    prometheus.io/path: "/metrics"
 spec:
   replicas: 1 
   selector:

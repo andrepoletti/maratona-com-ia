@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: encontros-tech
+  labels:
+    app: encontros-tech
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: encontros-tech
+  template:
+    metadata:
+      labels:
+        app: encontros-tech
+    spec:
+      containers:
+      - name: encontros-tech
+        image: andrepoletti/eventostech:v1
+        ports:
+        - containerPort: 8000
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://encontros-tech:encontros-tech@postgre:5432/encontrosdb"
+#          - name: DB_HOST
+#            value: postgre
+#          - name: DB_USER
+#            value: eventostech
+#          - name: DB_PASSWORD
+#            value: Pg1234
+#          - name: DB_NAME
+#            value: eventostech
